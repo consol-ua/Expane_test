@@ -10,7 +10,7 @@ type PropsType = {
 
 const ClientsList: React.FC<PropsType> = ({ clients, isLoading }) => {
 
-
+  console.log(clients, isLoading)
   return (
     <div className="p-4">
       <div className="">
@@ -19,7 +19,9 @@ const ClientsList: React.FC<PropsType> = ({ clients, isLoading }) => {
         <div className="">LastName</div>
         <div className="">Phone</div>
       </div>
-      {clients?.map((el) => <ClientItem client={el} />)}
+      <div className="">
+        {isLoading ? <span>Loading...</span> : clients?.map((el) => <ClientItem client={el} />)}
+      </div>
     </div>
   );
 }
