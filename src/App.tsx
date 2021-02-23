@@ -1,27 +1,50 @@
 import React from "react";
-import "./App.css";
-import { request, gql } from "graphql-request";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
+import ClientsList from "./Components/ClientsList/ClientsList";
+import FormAddClients from "./Components/FormAddClients/FormAddClients";
+import { getClients } from "./serverAPI/serverAPI";
 
-function App() {
-  const query = gql`
-    {
-      getClients {
-        id
-        firstName
-        lastName
-      }
-    }
-  `;
-  const getClient = () =>
-    request("https://test-task.expane.pro/api/graphql", query)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+const queryClient = new QueryClient()
 
+const App = () => {
   return (
-    <div className="App">
-      <button onClick={getClient}>Test GraphQL</button>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Wrapper />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
+
+
+const Wrapper = () => {
+  // Access the client
+  // const queryClient = useQueryClient()
+
+  const { isLoading, data, status } = useQuery("clients", getClients)
+
+  // // Mutations
+  // const mutation = useMutation(postTodo, {
+  //   onSuccess: () => {
+  //     // Invalidate and refetch
+  //     queryClient.invalidateQueries('todos')
+  //   },
+  // })
+  if (status === "error") {
+    return (
+      <div className="p-4">
+        <h1>Error querying</h1>
+      </div>
+    )
+  }
+  return (
+    <div className="p-4">
+      <h1>List of Clients</h1>
+      <ClientsList isLoading={isLoading} clients={data} />
+      <FormAddClients />
+    </div>
+  )
+}
+
 
 export default App;
