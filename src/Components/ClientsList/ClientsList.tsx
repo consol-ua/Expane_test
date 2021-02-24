@@ -10,17 +10,18 @@ type PropsType = {
 
 const ClientsList: React.FC<PropsType> = ({ clients, isLoading }) => {
 
-  console.log(clients, isLoading)
   return (
-    <div className="p-4">
-      <div className="">
-        <div className="">Avatar</div>
-        <div className="">FirstName</div>
-        <div className="">LastName</div>
-        <div className="">Phone</div>
+    <div className="border border-black min-w-max">
+      <div className="flex justify-between bg-gray-300 divide-x divide-black border-b-2 border-black ">
+        <div className="p-4 flex-initial w-2/12 p-1 text-center">Avatar</div>
+        <div className="p-4 flex-initial w-3/12 p-1 text-center">FirstName</div>
+        <div className="p-4 flex-initial w-3/12 p-1 text-center">LastName</div>
+        <div className="p-4 flex-initial w-4/12 p-1 text-center">Phone</div>
       </div>
-      <div className="">
-        {isLoading ? <span>Loading...</span> : clients?.map((el) => <ClientItem client={el} />)}
+      <div>
+        {isLoading ?
+          <span className="block text-xl font-bolt text-center p-4">Loading...</span>
+          : clients?.map((el, index) => <ClientItem client={el} index={index} key={el.id} />)}
       </div>
     </div>
   );

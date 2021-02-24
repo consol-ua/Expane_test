@@ -1,10 +1,10 @@
 import { request, gql } from "graphql-request";
 export type Client = {
   id: number
-  firstName: String
-  lastName: String
-  phone?: String
-  avatarUrl?: String
+  firstName: string
+  lastName: string
+  phone?: string
+  avatarUrl?: string
 }
 type GetClients = {
   getClients: Array<Client>
