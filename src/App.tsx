@@ -3,9 +3,15 @@ import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import ClientsList from "./Components/ClientsList/ClientsList";
 import FormAddClients from "./Components/FormAddClients/FormAddClients";
-import { Client, getClients } from "./serverAPI/serverAPI";
+import { getClients } from "./serverAPI/serverAPI";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+})
 
 const App = () => {
   return (
@@ -16,53 +22,10 @@ const App = () => {
   );
 }
 
-// const testQuery: Array<Client> = [{
-//   id: 3,
-//   firstName: "Bob",
-//   lastName: "Dylan",
-//   phone: "+1 410 5552311"
-// },
-// {
-//   id: 4,
-//   firstName: "Isaac",
-//   lastName: "Asimov",
-//   phone: "+36 016 2751209"
-// },
-// {
-//   id: 5,
-//   firstName: "Johny",
-//   lastName: "Silverhand",
-//   phone: "+380971111111"
-// }]
-// const testQueryRequest = () => {
-//   console.log("zapros")
-//   return testQuery.filter(() => true)
-// }
-// function setTimeoutPromise(fn: () => Array<Client>, delay: number): Promise<Array<Client>> {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve(fn())
-//     }, delay)
-//   })
-// }
-// const request = setTimeoutPromise(testQueryRequest, 1000)
-
-
 const Wrapper = () => {
-  // Access the client
-  // const queryClient = useQueryClient()
+  const { isLoading, data, status } = useQuery("clients", getClients, { refetchOnWindowFocus: false })
 
-  const { isLoading, data, status } = useQuery("clients", getClients)
-  // const { isLoading, data, status } = useQuery("clients", () => request)
-
-
-  // // Mutations
-  // const mutation = useMutation(postTodo, {
-  //   onSuccess: () => {
-  //     // Invalidate and refetch
-  //     queryClient.invalidateQueries('todos')
-  //   },
-  // })
+  const sortData = data?.sort((a, b) => a.id > b.id ? 1 : -1)
 
   if (status === "error") {
     return (
@@ -79,7 +42,7 @@ const Wrapper = () => {
           GO TO ADD
           </a>
       </div>
-      <ClientsList isLoading={isLoading} clients={data} />
+      <ClientsList isLoading={isLoading} clients={sortData} />
       <FormAddClients />
     </div>
   )

@@ -10,33 +10,10 @@ type PropsType = {
 const defaultAva =
   "https://iconape.com/wp-content/png_logo_vector/avatar-4.png";
 
-const compareObjects = (o1: any, o2: any) => {
-  for (let p in o1) {
-    if (o1.hasOwnProperty(p)) {
-      if (o1[p] !== o2[p]) {
-        return false;
-      }
-    }
-  }
-  for (let p in o2) {
-    if (o2.hasOwnProperty(p)) {
-      if (o1[p] !== o2[p]) {
-        return false;
-      }
-    }
-  }
-  return true;
-};
-
 const ClientItem: React.FC<PropsType> = ({ client, index }) => {
   const [editMode, setEditMode] = useState(false);
 
-  const editClient = (data: Client) => {
-    if (compareObjects(data, client)) {
-      console.log("data === client")
-      return setEditMode(false)
-    }
-    console.log("delaem zapros")
+  const editClient = () => {
     setEditMode(false)
   }
 
