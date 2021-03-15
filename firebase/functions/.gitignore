@@ -1,0 +1,12 @@
+## Compiled JavaScript files
+lib/
+
+typings/
+
+node_modules/
+
+secrets
+
+.env
+
+firebase-debug.log

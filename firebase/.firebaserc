@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "production": "expane-prod",
+    "staging": "pool-2a29c"
+  }
+}

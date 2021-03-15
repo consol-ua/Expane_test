@@ -1,0 +1,14 @@
+INSERT INTO public.businesses (id, name) VALUES (1, 'Бассейн AquaLife');
+INSERT INTO public.clients (id, first_name, last_name, phone, photo) VALUES (1, 'Семён', 'Семёныч', '1-300-LIFECELL', 'https://www.kayakbikebrew.com/wp-content/uploads/2019/04/team.png');
+INSERT INTO public.employees (id, first_name, last_name, phone, photo) VALUES (1, 'Фёдор', 'Ушаков', '1-800-NOCALL', 'https://pbs.twimg.com/profile_images/1169485714314190848/ONaMFMBf.jpg');
+INSERT INTO public.employees (id, first_name, last_name, phone, photo) VALUES (2, 'Майкл', 'Джексон', '1-801-NOCALL', 'https://i.pinimg.com/474x/22/67/7e/22677e490bda60b1ab48728d648e6994.jpg');
+INSERT INTO public.locations (id, name) VALUES (1, 'Лазурный бассейн');
+INSERT INTO public.locations (id, name) VALUES (2, 'Розовый бассейн');
+INSERT INTO public.locations (id, name) VALUES (3, 'Голубой бассейн');
+INSERT INTO public.services (id, name) VALUES (1, 'Тренировка по плаванию');
+INSERT INTO public.services (id, name) VALUES (2, 'Самостоятельный визит в бассейн');
+SELECT pg_catalog.setval('public.businesses_id_seq', 1, true);
+SELECT pg_catalog.setval('public.clients_id_seq', 2, true);
+SELECT pg_catalog.setval('public.employees_id_seq', 3, true);
+SELECT pg_catalog.setval('public.locations_id_seq', 3, true);
+SELECT pg_catalog.setval('public.services_id_seq', 2, true);

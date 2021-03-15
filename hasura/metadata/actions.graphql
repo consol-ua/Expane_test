@@ -1,0 +1,14 @@
+type Mutation {
+  upload_avatar (
+    userId: String!
+    base64Image: String!
+  ): AvatarUploadResult
+}
+
+
+
+
+type AvatarUploadResult {
+  url : String!
+}
+

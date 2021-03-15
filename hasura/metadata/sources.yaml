@@ -1,0 +1,189 @@
+- name: default
+  tables:
+  - table:
+      schema: public
+      name: businesses
+    insert_permissions:
+    - role: client
+      permission:
+        check: {}
+        columns:
+        - id
+        - name
+    select_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - name
+        filter: {}
+        allow_aggregations: true
+    update_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - name
+        filter: {}
+        check: null
+    delete_permissions:
+    - role: client
+      permission:
+        filter: {}
+  - table:
+      schema: public
+      name: clients
+    configuration:
+      custom_root_fields: {}
+      custom_column_names:
+        first_name: firstName
+        last_name: lastName
+    insert_permissions:
+    - role: client
+      permission:
+        check: {}
+        columns:
+        - id
+        - first_name
+        - last_name
+        - phone
+        - photo
+    select_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - first_name
+        - last_name
+        - phone
+        - photo
+        filter: {}
+        allow_aggregations: true
+    update_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - first_name
+        - last_name
+        - phone
+        - photo
+        filter: {}
+        check: null
+    delete_permissions:
+    - role: client
+      permission:
+        filter: {}
+  - table:
+      schema: public
+      name: employees
+    configuration:
+      custom_root_fields: {}
+      custom_column_names:
+        first_name: firstName
+        last_name: lastName
+    insert_permissions:
+    - role: client
+      permission:
+        check: {}
+        columns:
+        - id
+        - first_name
+        - last_name
+        - phone
+        - photo
+    select_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - first_name
+        - last_name
+        - phone
+        - photo
+        filter: {}
+        allow_aggregations: true
+    update_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - first_name
+        - last_name
+        - phone
+        - photo
+        filter: {}
+        check: null
+    delete_permissions:
+    - role: client
+      permission:
+        filter: {}
+  - table:
+      schema: public
+      name: locations
+    insert_permissions:
+    - role: client
+      permission:
+        check: {}
+        columns:
+        - id
+        - name
+        backend_only: false
+    select_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - name
+        filter: {}
+        allow_aggregations: true
+    update_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - name
+        filter: {}
+        check: null
+    delete_permissions:
+    - role: client
+      permission:
+        filter: {}
+  - table:
+      schema: public
+      name: services
+    insert_permissions:
+    - role: client
+      permission:
+        check: {}
+        columns:
+        - id
+        - name
+    select_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - name
+        filter: {}
+        allow_aggregations: true
+    update_permissions:
+    - role: client
+      permission:
+        columns:
+        - id
+        - name
+        filter: {}
+        check: null
+    delete_permissions:
+    - role: client
+      permission:
+        filter: {}
+  configuration:
+    connection_info:
+      database_url:
+        from_env: HASURA_GRAPHQL_DATABASE_URL
+      pool_settings:
+        retries: 1
+        idle_timeout: 180
+        max_connections: 50

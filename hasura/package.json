@@ -1,0 +1,29 @@
+{
+  "name": "hasura-docker",
+  "version": "0.1.0",
+  "scripts": {
+    "console": "hasura console",
+    "staging:migrate:status": "hasura --envfile .env.staging migrate status --database default",
+    "staging:migrate:apply": "hasura --envfile .env.staging migrate apply --database default",
+    "staging:migrate:create": "hasura --envfile .env.staging migrate create --database default",
+    "staging:metadata:diff": "hasura --envfile .env.staging metadata diff",
+    "staging:metadata:apply": "hasura --envfile .env.staging metadata apply",
+    "staging:metadata:export": "hasura --envfile .env.staging metadata export",
+    "staging:seed:apply": "hasura --envfile .env.staging seed apply --database default",
+    "production:migrate:status": "hasura --envfile .env.production migrate status --database default",
+    "production:migrate:apply": "hasura --envfile .env.production migrate apply --database default",
+    "production:migrate:create": "hasura --envfile .env.production migrate create --database default",
+    "production:metadata:diff": "hasura --envfile .env.production metadata diff",
+    "production:metadata:apply": "hasura --envfile .env.production metadata apply",
+    "production:metadata:export": "hasura --envfile .env.production metadata export",
+    "production:seed:apply": "hasura --envfile .env.production seed apply --database default",
+    "migrate:status": "hasura migrate status --database default",
+    "migrate:apply": "hasura migrate apply --database default",
+    "migrate:create": "hasura migrate create --database default",
+    "metadata:diff": "hasura metadata diff",
+    "metadata:apply": "hasura metadata apply",
+    "metadata:export": "hasura metadata export",
+    "seed:apply": "hasura seed apply --database default",
+    "env": "env-cmd -f .env.staging env"
+  }
+}
